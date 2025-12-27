@@ -16,7 +16,6 @@ REPORT_PORT = 8000
 REPORT_FILE = "temp.html"
 
 from html.parser import HTMLParser
-from main import agent  # noqa: E402
 
 class ExecSummaryParser(HTMLParser):
     def __init__(self):
@@ -61,6 +60,7 @@ def extract_executive_summary(html: str) -> str:
     parser = ExecSummaryParser()
     parser.feed(html)
     return parser.exec_html or ""
+
 
 
 
@@ -147,6 +147,7 @@ if not api_ready:
 # Import agent after keys set
 # -----------------------------
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+from main import agent  # noqa: E402
 
 
 # -----------------------------
@@ -328,8 +329,6 @@ elif st.session_state.state == "completed":
                     f"Report server running at http://localhost:{REPORT_PORT}/{REPORT_FILE}"
                 )
 
-
-
         if st.button("🔄 Restart", use_container_width=True):
             # Reset everything except API keys
             keep_keys = {
@@ -360,5 +359,4 @@ with st.sidebar:
 7. Use **Restart** to begin a new session.
 """
     )
-
 

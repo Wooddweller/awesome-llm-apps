@@ -63,7 +63,7 @@ research_subagent_3 = {
 
 # mother agent
 research_subagents = [research_subagent_1, research_subagent_2, research_subagent_3]
-model = init_chat_model(model="openai:gpt-5")
+model = init_chat_model(model="openai:gpt-5-mini")
 checkpointer = MemorySaver()
 research_instructions1 = f"""You are a sophisticated head researcher. 
 
